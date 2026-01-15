@@ -1,0 +1,23 @@
+{
+  "name": "environmental-impact-analyzer",
+  "version": "1.0.0",
+  "description": "Production-grade UI-driven Environmental Impact Assessment Platform",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace=client\" \"npm run dev --workspace=server\"",
+    "build": "npm run build --workspace=client && npm run build --workspace=server",
+    "start": "npm start --workspace=server",
+    "test": "npm test --workspace=client && npm test --workspace=server"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
