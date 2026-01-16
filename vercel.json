@@ -1,9 +1,9 @@
 {
   "version": 2,
-  "buildCommand": "npm run build --workspace=client",
+  "buildCommand": "npm run build",
   "outputDirectory": "client/dist",
   "env": {
-    "VITE_API_URL": "https://ecodash-server.onrender.com"
+    "VITE_API_URL": "@vite_api_url"
   },
   "redirects": [
     {
