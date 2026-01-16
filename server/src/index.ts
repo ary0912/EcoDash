@@ -58,7 +58,12 @@ app.use(express.json());
 // Serve static files from client build in production
 if (NODE_ENV === 'production') {
   console.log(`📁 Serving static files from: ${clientDistPath}`);
-  console.log(`📁 Client dist exists: ${fs.existsSync(clientDistPath)}`);
+  const distExists = fs.existsSync(clientDistPath);
+  console.log(`📁 Client dist exists: ${distExists}`);
+  if (!distExists) {
+    console.warn(`⚠️  WARNING: Client dist not found at ${clientDistPath}`);
+    console.warn(`⚠️  Make sure to build the frontend with: npm run build`);
+  }
   app.use(express.static(clientDistPath, {
     maxAge: '1h',
     etag: false
@@ -87,7 +92,8 @@ if (NODE_ENV === 'production') {
       res.status(404).json({
         error: 'Not found',
         path: req.path,
-        details: `Client dist not found at ${clientDistPath}`
+        details: `Client dist not found at ${clientDistPath}. Make sure to run: npm run build`,
+        note: 'This error means the frontend was not built. On your deployment platform (Railway/Render), ensure the Build Command is: npm install && npm run build'
       });
     }
   });
