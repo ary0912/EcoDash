@@ -3,7 +3,7 @@
   "buildCommand": "npm run build --workspace=client",
   "outputDirectory": "client/dist",
   "env": {
-    "VITE_API_URL": "@api_url"
+    "VITE_API_URL": "https://ecodash-server.onrender.com"
   },
   "redirects": [
     {
