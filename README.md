@@ -1,6 +1,6 @@
-<<<<<<< HEAD
+
 # EcoDash
-=======
+
 # Environmental Impact Analyzer
 
 A production-grade, UI-driven web application that empowers users to make informed, sustainable product choices through transparent environmental impact assessment.
@@ -452,4 +452,3 @@ For questions or improvements, contact the development team.
 
 **Built with transparency, scalability, and user-centric design in mind.**
 
->>>>>>> c702a03 (Initial project setup)

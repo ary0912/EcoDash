@@ -12,6 +12,14 @@ node_modules/
 /dist
 *.tsbuildinfo
 
+# TypeScript compilation artifacts
+**/*.d.ts
+**/*.d.ts.map
+**/*.js
+**/*.js.map
+src/**/*.js
+src/**/*.d.ts
+
 # Environment
 .env
 .env.local

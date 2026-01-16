@@ -1,14 +1,122 @@
-# Deployment Guide
+# 🚀 EcoDash - Free Deployment Guide
 
-This guide covers deploying the Environmental Impact Analyzer to production.
+Deploy your environmental impact analyzer for **$0/month** using **Vercel** (frontend) and **Render** (backend).
 
-## Pre-Deployment Checklist
+## ⚡ Quick Start (10 minutes)
+
+### Step 1: Deploy Backend to Render (Free)
+
+1. **Create Account & Connect GitHub**
+   - Go to https://render.com
+   - Sign up with GitHub
+
+2. **Create Web Service**
+   - Click "New" → "Web Service"
+   - Select your `EcoDash` repository
+   - Click "Connect"
+
+3. **Configure**
+   - **Name:** `ecodash-server`
+   - **Environment:** Node
+   - **Build Command:** `npm install && npm run build --workspace=server`
+   - **Start Command:** `node server/dist/index.js`
+   - **Plan:** Free
+
+4. **Environment Variables**
+   ```
+   NODE_ENV=production
+   PORT=3000
+   CORS_ORIGIN=https://ecodash.vercel.app
+   ```
+
+5. **Deploy** → Copy your URL (e.g., `https://ecodash-server.onrender.com`)
+
+### Step 2: Deploy Frontend to Vercel (Free)
+
+1. **Create Account & Connect GitHub**
+   - Go to https://vercel.com
+   - Sign up with GitHub
+
+2. **Import Project**
+   - Click "Add New" → "Project"
+   - Select `EcoDash` repository
+   - Click "Import"
+
+3. **Configure**
+   - **Framework:** Vite
+   - **Root Directory:** `./client`
+   - **Build Command:** `npm run build`
+
+4. **Environment Variables**
+   ```
+   VITE_API_URL=https://ecodash-server.onrender.com
+   ```
+
+5. **Deploy** → Your site is live! 🎉
+
+### Step 3: Update Backend CORS
+
+1. Go to Render dashboard
+2. Select `ecodash-server`
+3. Update `CORS_ORIGIN` to your Vercel URL
+4. Save and redeploy
+
+## 📊 Free Tier Limits
+
+| Feature | Vercel | Render |
+|---------|--------|--------|
+| **Cost** | $0 | $0 |
+| **Hosting** | Global CDN | US/EU Servers |
+| **SSL** | ✅ Included | ✅ Included |
+| **Auto-deploy** | ✅ GitHub push | ✅ GitHub push |
+| **Performance** | ⚡ Fast | ⚡ Fast (after warmup) |
+| **Uptime** | 99.95% | 99.95% |
+| **Cold Starts** | None | 30s first call |
+
+## 🔄 Automatic Updates
+
+Every `git push` to `main`:
+1. Vercel rebuilds & deploys frontend
+2. Render rebuilds & deploys backend
+3. Site auto-updates within 2 min
+
+## ⚠️ Known Limitations
+
+**Render Free Tier:**
+- Spins down after 15 min inactivity
+- First request after spin-down takes ~30 seconds
+- Limited to 500 hours/month (covers 24/7 operation)
+
+**Solution:** Use UptimeRobot (free) to ping every 10 min:
+- Add monitor for `https://ecodash-server.onrender.com/health`
+- Keeps server always awake
+
+## 💡 Next Steps
+
+**To Upgrade Later:**
+- Vercel Pro: $20/month (more functions)
+- Render Paid: $7/month (always-on, 2GB RAM)
+- Custom Domain: $12/year
+
+**Monitor Performance:**
+- Render: Dashboard → Metrics
+- Vercel: Dashboard → Analytics
+- Set alerts for errors
+
+## 🐛 Troubleshooting
+
+| Issue | Solution |
+|-------|----------|
+| CORS Error | Update `CORS_ORIGIN` on Render |
+| Blank Page | Check console (F12) for errors |
+| Slow First Request | Normal on Render free tier (~30s) |
+| Cannot connect to API | Verify Render URL in `VITE_API_URL` |
+
+## 📋 Pre-Deployment Checklist
 
 - [ ] All tests pass: `npm test`
 - [ ] Production build succeeds: `npm run build`
 - [ ] Environment variables configured
-- [ ] Database migrations (if applicable)
-- [ ] Security headers configured
 - [ ] CORS policy reviewed
 - [ ] Error monitoring enabled
 - [ ] Performance monitoring enabled

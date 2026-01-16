@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: ecodash-server
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: npm install && npm run build --workspace=server
+    startCommand: node server/dist/index.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: CORS_ORIGIN
+        value: https://ecodash.vercel.app
