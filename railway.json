@@ -5,5 +5,9 @@
   },
   "deploy": {
     "startCommand": "npm run start"
+  },
+  "env": {
+    "NODE_ENV": "production",
+    "PORT": "3000"
   }
 }

@@ -1,14 +1,10 @@
 {
   "version": 2,
   "buildCommand": "npm run build",
-  "outputDirectory": "client/dist",
+  "installCommand": "npm install",
+  "outputDirectory": "server/dist",
   "env": {
-    "VITE_API_URL": "@vite_api_url"
-  },
-  "redirects": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ]
+    "NODE_ENV": "production",
+    "PORT": "3000"
+  }
 }
