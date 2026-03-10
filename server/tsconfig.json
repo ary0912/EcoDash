@@ -1,10 +1,15 @@
 {
-  "extends": "../tsconfig.json",
   "compilerOptions": {
+    "target": "ES2022",
     "module": "ES2020",
-    "outDir": "./dist",
+    "moduleResolution": "Node",
     "rootDir": "./src",
-    "moduleResolution": "node"
+    "outDir": "./dist",
+    "lib": ["ES2022"],
+    "types": ["node"],
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": false
   },
   "include": ["src"]
 }
