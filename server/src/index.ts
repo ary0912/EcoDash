@@ -77,6 +77,17 @@ app.use(
 
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.json({
+    message: "EcoDash Environmental Impact Analyzer API",
+    status: "running",
+    endpoints: {
+      health: "/health",
+      assess: "POST /assess"
+    }
+  });
+});
+
 /**
  * Health Check Endpoint
  */
