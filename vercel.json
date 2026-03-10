@@ -1,10 +1,4 @@
 {
-  "version": 2,
-  "buildCommand": "npm run build",
-  "installCommand": "npm install",
-  "outputDirectory": "server/dist",
-  "env": {
-    "NODE_ENV": "production",
-    "PORT": "3000"
-  }
+  "buildCommand": "cd client && npm install && npm run build",
+  "outputDirectory": "client/dist"
 }
