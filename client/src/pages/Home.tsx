@@ -56,11 +56,13 @@ export const Home: React.FC<{ onAssessmentComplete: (data: any) => void }> = ({
 
       {/* Animated Background */}
 
-      <div className="absolute inset-0 -z-10">
+      <div className="absolute inset-0 -z-10 overflow-hidden">
 
-        <div className="absolute w-[600px] h-[600px] bg-green-200 rounded-full blur-[120px] opacity-40 top-[-100px] left-[-150px] animate-pulse"></div>
+        <div className="absolute w-[700px] h-[700px] bg-green-300 opacity-20 rounded-full blur-[120px] animate-[float1_12s_ease-in-out_infinite] left-[-200px] top-[-150px]" />
 
-        <div className="absolute w-[500px] h-[500px] bg-blue-200 rounded-full blur-[120px] opacity-40 bottom-[-100px] right-[-100px] animate-pulse"></div>
+        <div className="absolute w-[600px] h-[600px] bg-blue-300 opacity-20 rounded-full blur-[120px] animate-[float2_16s_ease-in-out_infinite] right-[-200px] top-[100px]" />
+
+        <div className="absolute w-[500px] h-[500px] bg-emerald-300 opacity-20 rounded-full blur-[120px] animate-[float3_18s_ease-in-out_infinite] bottom-[-150px] left-[200px]" />
 
       </div>
 
@@ -69,14 +71,12 @@ export const Home: React.FC<{ onAssessmentComplete: (data: any) => void }> = ({
 
       <header className="fixed top-0 w-full h-16 bg-white/70 backdrop-blur-md border-b border-slate-200 z-50">
 
-        <div className="max-w-[1400px] mx-auto px-8 h-full flex items-center justify-between">
+        <div className="max-w-[1500px] mx-auto px-10 h-full flex items-center justify-between">
 
           <div className="flex items-center gap-3">
 
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-green-500 to-blue-500 flex items-center justify-center">
-
               <Leaf className="text-white w-5 h-5" />
-
             </div>
 
             <span className="font-semibold text-lg tracking-tight">
@@ -94,19 +94,18 @@ export const Home: React.FC<{ onAssessmentComplete: (data: any) => void }> = ({
       </header>
 
 
+      {/* HERO */}
 
-      {/* MAIN HERO */}
+      <section className="pt-32 pb-24 px-10">
 
-      <section className="pt-32 pb-24 px-8">
-
-        <div className="max-w-[1400px] mx-auto grid lg:grid-cols-[1.1fr_1fr] gap-24 items-start">
+        <div className="max-w-[1500px] mx-auto grid lg:grid-cols-[1fr_620px] gap-24 items-center">
 
 
           {/* LEFT CONTENT */}
 
-          <div className="pt-10 max-w-xl">
+          <div className="max-w-xl">
 
-            <h1 className="text-[56px] leading-[1.1] font-semibold tracking-tight mb-6">
+            <h1 className="text-[56px] leading-[1.05] font-semibold tracking-tight mb-6">
 
               Understand the
               <br />
@@ -124,16 +123,16 @@ export const Home: React.FC<{ onAssessmentComplete: (data: any) => void }> = ({
 
             <p className="text-lg text-slate-600 mb-12 leading-relaxed">
 
-              EcoDash evaluates sustainability using transparent AI-powered
-              environmental scoring. Understand product impact and make
-              better design decisions backed by data.
+              EcoDash evaluates sustainability using transparent
+              AI-powered environmental scoring so teams can design
+              better products with clear environmental insights.
 
             </p>
 
 
             {/* FEATURES */}
 
-            <div className="space-y-7">
+            <div className="space-y-8">
 
               {[
                 {
@@ -145,13 +144,13 @@ export const Home: React.FC<{ onAssessmentComplete: (data: any) => void }> = ({
                 {
                   icon: TrendingUp,
                   title: "Instant Environmental Insights",
-                  desc: "Analyze sustainability metrics within seconds.",
+                  desc: "Analyze sustainability metrics instantly.",
                   color: "bg-blue-100 text-blue-600",
                 },
                 {
                   icon: Shield,
                   title: "Science-Based Methodology",
-                  desc: "Built on lifecycle analysis and environmental research.",
+                  desc: "Built on lifecycle and environmental research.",
                   color: "bg-emerald-100 text-emerald-600",
                 },
               ].map((item, i) => {
@@ -189,52 +188,26 @@ export const Home: React.FC<{ onAssessmentComplete: (data: any) => void }> = ({
           </div>
 
 
-          {/* RIGHT PRODUCT PANEL */}
+          {/* PRODUCT PANEL */}
 
-          <div
-            className="
-            bg-white
-            rounded-3xl
-            shadow-[0_40px_120px_rgba(0,0,0,0.12)]
-            border border-slate-200
-            p-10
-            transition
-            hover:shadow-[0_50px_140px_rgba(0,0,0,0.16)]
-          "
-          >
-
-            {/* Helper Cards */}
-
-            <div className="grid grid-cols-2 gap-4 mb-8">
-
-              <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm">
-
-                <h4 className="font-semibold text-blue-900 mb-2">
-                  How to Describe Your Product
-                </h4>
-
-                <ul className="text-blue-700 space-y-1 text-xs">
-                  <li>✓ Product Name</li>
-                  <li>✓ Category</li>
-                  <li>✓ Materials & lifecycle</li>
-                </ul>
-
-              </div>
+          <div className="bg-white rounded-3xl shadow-[0_40px_120px_rgba(0,0,0,0.12)] border border-slate-200 p-10">
 
 
-              <div className="bg-green-50 border border-green-200 rounded-xl p-4 text-sm">
+            {/* Helper Section */}
 
-                <h4 className="font-semibold text-green-900 mb-2">
-                  Example Product
-                </h4>
+            <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 mb-8 text-sm">
 
-                <p className="text-green-800 text-xs leading-relaxed">
-                  Eco Water Bottle<br />
-                  100% recycled aluminium<br />
-                  Sustainable manufacturing
-                </p>
+              <h4 className="font-semibold mb-2">
+                Example Product
+              </h4>
 
-              </div>
+              <p className="text-slate-600 text-xs leading-relaxed">
+                Eco Water Bottle
+                <br />
+                Category: Kitchen & Dining
+                <br />
+                100% recycled aluminium, sustainable manufacturing
+              </p>
 
             </div>
 
@@ -248,17 +221,14 @@ export const Home: React.FC<{ onAssessmentComplete: (data: any) => void }> = ({
             )}
 
 
-            {/* PRODUCT FORM */}
-
             <ProductForm
               onSubmit={handleFormSubmit}
               isLoading={isLoading}
             />
 
-
             <p className="text-xs text-slate-500 mt-6">
 
-              💡 Detailed descriptions lead to more accurate environmental assessments.
+              💡 More detailed descriptions lead to more accurate environmental assessments.
 
             </p>
 
@@ -270,11 +240,11 @@ export const Home: React.FC<{ onAssessmentComplete: (data: any) => void }> = ({
 
 
 
-      {/* SCORING SYSTEM */}
+      {/* SCORING FRAMEWORK */}
 
       <section className="py-24 bg-white border-t border-slate-200">
 
-        <div className="max-w-[1200px] mx-auto px-8">
+        <div className="max-w-[1200px] mx-auto px-10">
 
           <h2 className="text-3xl font-semibold text-center tracking-tight mb-14">
             Environmental Impact Framework
@@ -329,6 +299,31 @@ export const Home: React.FC<{ onAssessmentComplete: (data: any) => void }> = ({
         © 2026 EcoDash — Sustainability insights powered by transparent AI.
 
       </footer>
+
+
+      {/* Custom Animations */}
+
+      <style>
+        {`
+        @keyframes float1 {
+          0% { transform: translateY(0px); }
+          50% { transform: translateY(40px); }
+          100% { transform: translateY(0px); }
+        }
+
+        @keyframes float2 {
+          0% { transform: translateY(0px); }
+          50% { transform: translateY(-50px); }
+          100% { transform: translateY(0px); }
+        }
+
+        @keyframes float3 {
+          0% { transform: translateY(0px); }
+          50% { transform: translateY(60px); }
+          100% { transform: translateY(0px); }
+        }
+        `}
+      </style>
 
     </div>
   );
