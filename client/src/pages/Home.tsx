@@ -16,42 +16,52 @@ import {
 export const Home: React.FC<{ onAssessmentComplete: (data: any) => void }> = ({
   onAssessmentComplete,
 }) => {
+
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const handleFormSubmit = async (formData: AssessmentRequest) => {
+
     setIsLoading(true);
     setError(null);
 
     try {
+
       const result = await assessProduct(formData);
 
       onAssessmentComplete({
         productName: formData.name,
         score: result,
       });
+
     } catch (err) {
+
       const message =
         err instanceof Error ? err.message : "Failed to assess product";
 
       setError(message);
+
     } finally {
+
       setIsLoading(false);
+
     }
+
   };
 
   return (
+
     <div className="min-h-screen relative bg-[#f5f5f7] text-slate-900 font-[Inter] overflow-hidden">
 
       {/* Animated Background */}
 
       <div className="absolute inset-0 -z-10 overflow-hidden">
 
-        <div className="absolute w-[900px] h-[900px] bg-green-300 opacity-25 rounded-full blur-[160px] animate-[float1_18s_ease-in-out_infinite] left-[-300px] top-[-200px]" />
+        <div className="absolute w-[900px] h-[900px] bg-green-300 opacity-25 rounded-full blur-[160px] float1 left-[-300px] top-[-200px]" />
 
-        <div className="absolute w-[800px] h-[800px] bg-blue-300 opacity-20 rounded-full blur-[160px] animate-[float2_22s_ease-in-out_infinite] right-[-250px] top-[120px]" />
+        <div className="absolute w-[800px] h-[800px] bg-blue-300 opacity-20 rounded-full blur-[160px] float2 right-[-250px] top-[120px]" />
 
-        <div className="absolute w-[700px] h-[700px] bg-emerald-300 opacity-20 rounded-full blur-[160px] animate-[float3_20s_ease-in-out_infinite] bottom-[-200px] left-[300px]" />
+        <div className="absolute w-[700px] h-[700px] bg-emerald-300 opacity-20 rounded-full blur-[160px] float3 bottom-[-200px] left-[300px]" />
 
       </div>
 
@@ -83,13 +93,13 @@ export const Home: React.FC<{ onAssessmentComplete: (data: any) => void }> = ({
       </header>
 
 
-      {/* HERO SECTION */}
+      {/* HERO */}
 
       <section className="pt-24 pb-16 px-10">
 
         <div className="max-w-[1600px] mx-auto grid lg:grid-cols-[1fr_720px] gap-20 items-center">
 
-          {/* LEFT CONTENT */}
+          {/* LEFT SIDE */}
 
           <div className="max-w-xl">
 
@@ -137,6 +147,7 @@ export const Home: React.FC<{ onAssessmentComplete: (data: any) => void }> = ({
                 const Icon = item.icon;
 
                 return (
+
                   <div key={i} className="flex gap-4 items-start">
 
                     <div className={`p-3 rounded-xl ${item.color}`}>
@@ -156,6 +167,7 @@ export const Home: React.FC<{ onAssessmentComplete: (data: any) => void }> = ({
                     </div>
 
                   </div>
+
                 );
 
               })}
@@ -169,13 +181,11 @@ export const Home: React.FC<{ onAssessmentComplete: (data: any) => void }> = ({
 
           <div className="relative">
 
-            {/* subtle gradient glow */}
-
             <div className="absolute inset-0 bg-gradient-to-br from-green-50 to-blue-50 rounded-3xl blur-2xl opacity-70" />
 
             <div className="relative bg-white rounded-3xl shadow-[0_60px_140px_rgba(0,0,0,0.15)] border border-slate-200 p-10">
 
-              {/* Helper Cards */}
+              {/* Helper */}
 
               <div className="grid grid-cols-2 gap-3 mb-6 text-sm">
 
@@ -199,17 +209,14 @@ export const Home: React.FC<{ onAssessmentComplete: (data: any) => void }> = ({
                   </h4>
 
                   <p className="text-green-800 text-xs">
-                    Eco Water Bottle  
-                    Kitchen & Dining  
+                    Eco Water Bottle
+                    Kitchen & Dining
                     100% recycled aluminum
                   </p>
 
                 </div>
 
               </div>
-
-
-              {/* Error */}
 
               {error && (
 
@@ -219,18 +226,13 @@ export const Home: React.FC<{ onAssessmentComplete: (data: any) => void }> = ({
 
               )}
 
-              {/* Product Form */}
-
               <ProductForm
                 onSubmit={handleFormSubmit}
                 isLoading={isLoading}
               />
 
               <p className="text-xs text-slate-500 mt-6">
-
-                💡 Detailed descriptions lead to more accurate
-                environmental assessments.
-
+                💡 Detailed descriptions lead to more accurate environmental assessments.
               </p>
 
             </div>
@@ -242,7 +244,7 @@ export const Home: React.FC<{ onAssessmentComplete: (data: any) => void }> = ({
       </section>
 
 
-      {/* IMPACT FRAMEWORK */}
+      {/* FRAMEWORK */}
 
       <section className="py-20 bg-white border-t border-slate-200">
 
@@ -302,34 +304,36 @@ export const Home: React.FC<{ onAssessmentComplete: (data: any) => void }> = ({
       </footer>
 
 
-      {/* Background Animation Keyframes */}
+      {/* Animation Styles */}
 
-      <style>
+      <style>{`
 
-        {`
+      @keyframes float1 {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(40px); }
+        100% { transform: translateY(0px); }
+      }
 
-        @keyframes float1 {
-          0% { transform: translateY(0px); }
-          50% { transform: translateY(40px); }
-          100% { transform: translateY(0px); }
-        }
+      @keyframes float2 {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-50px); }
+        100% { transform: translateY(0px); }
+      }
 
-        @keyframes float2 {
-          0% { transform: translateY(0px); }
-          50% { transform: translateY(-50px); }
-          100% { transform: translateY(0px); }
-        }
+      @keyframes float3 {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(60px); }
+        100% { transform: translateY(0px); }
+      }
 
-        @keyframes float3 {
-          0% { transform: translateY(0px); }
-          50% { transform: translateY(60px); }
-          100% { transform: translateY(0px); }
-        }
+      .float1 { animation: float1 18s ease-in-out infinite; }
+      .float2 { animation: float2 22s ease-in-out infinite; }
+      .float3 { animation: float3 20s ease-in-out infinite; }
 
-        `}
-
-      </style>
+      `}</style>
 
     </div>
+
   );
+
 };
