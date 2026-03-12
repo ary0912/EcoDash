@@ -16,53 +16,42 @@ import {
 export const Home: React.FC<{ onAssessmentComplete: (data: any) => void }> = ({
   onAssessmentComplete,
 }) => {
-
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const handleFormSubmit = async (formData: AssessmentRequest) => {
-
     setIsLoading(true);
     setError(null);
 
     try {
-
       const result = await assessProduct(formData);
 
       onAssessmentComplete({
         productName: formData.name,
         score: result,
       });
-
     } catch (err) {
-
       const message =
         err instanceof Error ? err.message : "Failed to assess product";
 
       setError(message);
-
     } finally {
-
       setIsLoading(false);
-
     }
-
   };
 
   return (
-
-    <div className="min-h-screen relative bg-[#f5f5f7] overflow-hidden font-[Inter] text-slate-900">
-
+    <div className="min-h-screen relative bg-[#f5f5f7] text-slate-900 font-[Inter] overflow-hidden">
 
       {/* Animated Background */}
 
       <div className="absolute inset-0 -z-10 overflow-hidden">
 
-        <div className="absolute w-[700px] h-[700px] bg-green-300 opacity-20 rounded-full blur-[120px] animate-[float1_12s_ease-in-out_infinite] left-[-200px] top-[-150px]" />
+        <div className="absolute w-[900px] h-[900px] bg-green-300 opacity-25 rounded-full blur-[160px] animate-[float1_18s_ease-in-out_infinite] left-[-300px] top-[-200px]" />
 
-        <div className="absolute w-[600px] h-[600px] bg-blue-300 opacity-20 rounded-full blur-[120px] animate-[float2_16s_ease-in-out_infinite] right-[-200px] top-[100px]" />
+        <div className="absolute w-[800px] h-[800px] bg-blue-300 opacity-20 rounded-full blur-[160px] animate-[float2_22s_ease-in-out_infinite] right-[-250px] top-[120px]" />
 
-        <div className="absolute w-[500px] h-[500px] bg-emerald-300 opacity-20 rounded-full blur-[120px] animate-[float3_18s_ease-in-out_infinite] bottom-[-150px] left-[200px]" />
+        <div className="absolute w-[700px] h-[700px] bg-emerald-300 opacity-20 rounded-full blur-[160px] animate-[float3_20s_ease-in-out_infinite] bottom-[-200px] left-[300px]" />
 
       </div>
 
@@ -71,7 +60,7 @@ export const Home: React.FC<{ onAssessmentComplete: (data: any) => void }> = ({
 
       <header className="fixed top-0 w-full h-16 bg-white/70 backdrop-blur-md border-b border-slate-200 z-50">
 
-        <div className="max-w-[1500px] mx-auto px-10 h-full flex items-center justify-between">
+        <div className="max-w-[1600px] mx-auto px-10 h-full flex items-center justify-between">
 
           <div className="flex items-center gap-3">
 
@@ -94,12 +83,11 @@ export const Home: React.FC<{ onAssessmentComplete: (data: any) => void }> = ({
       </header>
 
 
-      {/* HERO */}
+      {/* HERO SECTION */}
 
-      <section className="pt-32 pb-24 px-10">
+      <section className="pt-24 pb-16 px-10">
 
-        <div className="max-w-[1500px] mx-auto grid lg:grid-cols-[1fr_620px] gap-24 items-center">
-
+        <div className="max-w-[1600px] mx-auto grid lg:grid-cols-[1fr_720px] gap-20 items-center">
 
           {/* LEFT CONTENT */}
 
@@ -108,27 +96,18 @@ export const Home: React.FC<{ onAssessmentComplete: (data: any) => void }> = ({
             <h1 className="text-[56px] leading-[1.05] font-semibold tracking-tight mb-6">
 
               Understand the
-              <br />
-
-              <span className="text-green-600">
-                environmental impact
-              </span>
-
-              <br />
-
+              <span className="text-green-600"> environmental impact </span>
               of your products
 
             </h1>
 
-
             <p className="text-lg text-slate-600 mb-12 leading-relaxed">
 
-              EcoDash evaluates sustainability using transparent
+              EcoDash evaluates sustainability through transparent
               AI-powered environmental scoring so teams can design
               better products with clear environmental insights.
 
             </p>
-
 
             {/* FEATURES */}
 
@@ -138,19 +117,19 @@ export const Home: React.FC<{ onAssessmentComplete: (data: any) => void }> = ({
                 {
                   icon: CheckCircle,
                   title: "Transparent AI Analysis",
-                  desc: "See exactly how environmental scores are calculated.",
+                  desc: "Understand exactly how each environmental score is calculated.",
                   color: "bg-green-100 text-green-600",
                 },
                 {
                   icon: TrendingUp,
                   title: "Instant Environmental Insights",
-                  desc: "Analyze sustainability metrics instantly.",
+                  desc: "Analyze sustainability metrics in seconds.",
                   color: "bg-blue-100 text-blue-600",
                 },
                 {
                   icon: Shield,
                   title: "Science-Based Methodology",
-                  desc: "Built on lifecycle and environmental research.",
+                  desc: "Built on lifecycle analysis and environmental research.",
                   color: "bg-emerald-100 text-emerald-600",
                 },
               ].map((item, i) => {
@@ -158,11 +137,10 @@ export const Home: React.FC<{ onAssessmentComplete: (data: any) => void }> = ({
                 const Icon = item.icon;
 
                 return (
-
                   <div key={i} className="flex gap-4 items-start">
 
                     <div className={`p-3 rounded-xl ${item.color}`}>
-                      <Icon className="w-5 h-5" />
+                      <Icon className="w-6 h-6" />
                     </div>
 
                     <div>
@@ -178,7 +156,6 @@ export const Home: React.FC<{ onAssessmentComplete: (data: any) => void }> = ({
                     </div>
 
                   </div>
-
                 );
 
               })}
@@ -190,47 +167,73 @@ export const Home: React.FC<{ onAssessmentComplete: (data: any) => void }> = ({
 
           {/* PRODUCT PANEL */}
 
-          <div className="bg-white rounded-3xl shadow-[0_40px_120px_rgba(0,0,0,0.12)] border border-slate-200 p-10">
+          <div className="relative">
+
+            {/* subtle gradient glow */}
+
+            <div className="absolute inset-0 bg-gradient-to-br from-green-50 to-blue-50 rounded-3xl blur-2xl opacity-70" />
+
+            <div className="relative bg-white rounded-3xl shadow-[0_60px_140px_rgba(0,0,0,0.15)] border border-slate-200 p-10">
+
+              {/* Helper Cards */}
+
+              <div className="grid grid-cols-2 gap-3 mb-6 text-sm">
+
+                <div className="bg-slate-50 border border-slate-200 rounded-lg p-3">
+
+                  <h4 className="font-semibold mb-1 text-xs">
+                    How to Describe Your Product
+                  </h4>
+
+                  <p className="text-slate-500 text-xs leading-relaxed">
+                    Product name, category, materials,
+                    manufacturing, lifecycle.
+                  </p>
+
+                </div>
+
+                <div className="bg-green-50 border border-green-200 rounded-lg p-3">
+
+                  <h4 className="font-semibold mb-1 text-xs">
+                    Example Product
+                  </h4>
+
+                  <p className="text-green-800 text-xs">
+                    Eco Water Bottle  
+                    Kitchen & Dining  
+                    100% recycled aluminum
+                  </p>
+
+                </div>
+
+              </div>
 
 
-            {/* Helper Section */}
+              {/* Error */}
 
-            <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 mb-8 text-sm">
+              {error && (
 
-              <h4 className="font-semibold mb-2">
-                Example Product
-              </h4>
+                <div className="mb-6 p-4 rounded-lg border border-red-200 bg-red-50 text-red-700 text-sm">
+                  {error}
+                </div>
 
-              <p className="text-slate-600 text-xs leading-relaxed">
-                Eco Water Bottle
-                <br />
-                Category: Kitchen & Dining
-                <br />
-                100% recycled aluminium, sustainable manufacturing
+              )}
+
+              {/* Product Form */}
+
+              <ProductForm
+                onSubmit={handleFormSubmit}
+                isLoading={isLoading}
+              />
+
+              <p className="text-xs text-slate-500 mt-6">
+
+                💡 Detailed descriptions lead to more accurate
+                environmental assessments.
+
               </p>
 
             </div>
-
-
-            {error && (
-
-              <div className="mb-6 p-4 rounded-lg border border-red-200 bg-red-50 text-red-700 text-sm">
-                {error}
-              </div>
-
-            )}
-
-
-            <ProductForm
-              onSubmit={handleFormSubmit}
-              isLoading={isLoading}
-            />
-
-            <p className="text-xs text-slate-500 mt-6">
-
-              💡 More detailed descriptions lead to more accurate environmental assessments.
-
-            </p>
 
           </div>
 
@@ -239,10 +242,9 @@ export const Home: React.FC<{ onAssessmentComplete: (data: any) => void }> = ({
       </section>
 
 
+      {/* IMPACT FRAMEWORK */}
 
-      {/* SCORING FRAMEWORK */}
-
-      <section className="py-24 bg-white border-t border-slate-200">
+      <section className="py-20 bg-white border-t border-slate-200">
 
         <div className="max-w-[1200px] mx-auto px-10">
 
@@ -250,7 +252,7 @@ export const Home: React.FC<{ onAssessmentComplete: (data: any) => void }> = ({
             Environmental Impact Framework
           </h2>
 
-          <div className="grid md:grid-cols-4 gap-10">
+          <div className="grid md:grid-cols-4 gap-14">
 
             {[
               { label: "Carbon Impact", weight: "40%", icon: Leaf, color: "text-green-600" },
@@ -265,7 +267,7 @@ export const Home: React.FC<{ onAssessmentComplete: (data: any) => void }> = ({
 
                 <div
                   key={i}
-                  className="bg-slate-50 rounded-xl p-6 text-center hover:shadow-md transition"
+                  className="bg-slate-50 rounded-xl p-7 text-center hover:shadow-md transition"
                 >
 
                   <Icon className={`mx-auto mb-3 w-7 h-7 ${item.color}`} />
@@ -291,20 +293,21 @@ export const Home: React.FC<{ onAssessmentComplete: (data: any) => void }> = ({
       </section>
 
 
-
       {/* FOOTER */}
 
-      <footer className="border-t border-slate-200 py-10 text-center text-sm text-slate-500">
+      <footer className="border-t border-slate-200 py-6 text-center text-sm text-slate-500">
 
         © 2026 EcoDash — Sustainability insights powered by transparent AI.
 
       </footer>
 
 
-      {/* Custom Animations */}
+      {/* Background Animation Keyframes */}
 
       <style>
+
         {`
+
         @keyframes float1 {
           0% { transform: translateY(0px); }
           50% { transform: translateY(40px); }
@@ -322,7 +325,9 @@ export const Home: React.FC<{ onAssessmentComplete: (data: any) => void }> = ({
           50% { transform: translateY(60px); }
           100% { transform: translateY(0px); }
         }
+
         `}
+
       </style>
 
     </div>
